@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>test</title>
+	<meta charset="UTF-8">
+	<title>test</title>
 
-    <link rel="stylesheet" href="./build/css/main.css"/>
+	<link rel="stylesheet" href="./build/css/main.css"/>
 
-    <script src="../node_modules/requirejs/require.js"></script>
+	<script data-main="./js/app" src="../node_modules/requirejs/require.js"></script>
 </head>
 <body>
-<script>
-    requirejs.config({
-        baseUrl: '/',
-        paths:   {
-            Backbone:   '../node_modules/backbone/backbone',
-            underscore: '../node_modules/underscore/underscore',
-            jquery:     '../node_modules/jquery/dist/jquery'
-        }
-    });
-</script>
+<div id="content">
 
+</div>
+<script id="tpl" type="text/template">
+	<div id="content">
+		<div class="wrapper <%- body.get('isActive') ? 'active' : '' %>">
+			<%- body.get('title') %>
+			<div data-ignore class="items"></div>
+			<% if(body.get('isBtnEnabled')) { %>
+			<div class="btn">click me!</div>
+			<% } %>
+		</div>
+	</div>
+</script>
 </body>
 </html>
